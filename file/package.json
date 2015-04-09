@@ -11,7 +11,6 @@
   "bugs": {
 		"mail": "iidn-sys-notice@yourinventit.com"
   },
-	"notification" : { "http" : "http://192.168.1.227:7120/dmjob/notify" },
   "models" : {
     "ContentInfo" : {
       "array" : false,
