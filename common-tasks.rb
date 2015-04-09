@@ -32,7 +32,7 @@ end
 #
 # rake clobber_package package
 #
-Rake::PackageTask.new(File.basename(Dir.pwd), '1.0') do |p|
+Rake::PackageTask.new(File.basename(Dir.pwd), '1.0.0') do |p|
   p.need_zip = true
   p.package_files.include('*.js').exclude('*.test.js').include('package.json')
 end
