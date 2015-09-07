@@ -1,6 +1,6 @@
 var nodeUnit = require('nodeunit');
 var sinon = require('sinon');
-var script = require('path').resolve('./deliver-file-result!1.0.js');
+var script = require('path').resolve('./src/deliver-file-result.js');
 var moat = require('moat');
 
 module.exports = nodeUnit.testCase({
@@ -14,7 +14,7 @@ module.exports = nodeUnit.testCase({
   'file delivery result, successful case.' : function(assert) {
     // record state
     var context = moat.init(sinon);
-    var arguments = {
+    var args = {
       contents: JSON.stringify([
 	{
           uid: "uid-1",
@@ -24,7 +24,7 @@ module.exports = nodeUnit.testCase({
     };
     context.setDevice('uid', 'deviceId', 'name', 'status', 'clientVersion', 0);
     context.setDmjob('uid', 'deviceId', 'name', 'status', 'jobServiceId',
-		     'sessionId', arguments, 'createdAt', 'activatedAt', 'startedAt',
+		     'sessionId', args, 'createdAt', 'activatedAt', 'startedAt',
 		     'expiredAt', 'http', 'http://localhost');
     // see https://docs.google.com/a/yourinventit.com/document/d/1kdHxMp2VcZWcDnJ4YZqmW_aEYQt94ySrlityZQK2g6w/edit#heading=h.qznmwoavtwsw
     context.setObjects([{
@@ -48,7 +48,7 @@ module.exports = nodeUnit.testCase({
   'file delivery result, error case.' : function(assert) {
     // record state
     var context = moat.init(sinon);
-    var arguments = {
+    var args = {
       contents: JSON.stringify([
 	{
           uid: "uid-1",
@@ -62,7 +62,7 @@ module.exports = nodeUnit.testCase({
     };
     context.setDevice('uid', 'deviceId', 'name', 'status', 'clientVersion', 0);
     context.setDmjob('uid', 'deviceId', 'name', 'status', 'jobServiceId',
-		     'sessionId', arguments, 'createdAt', 'activatedAt', 'startedAt',
+		     'sessionId', args, 'createdAt', 'activatedAt', 'startedAt',
 		     'expiredAt', 'http', 'http://localhost');
     // see https://docs.google.com/a/yourinventit.com/document/d/1kdHxMp2VcZWcDnJ4YZqmW_aEYQt94ySrlityZQK2g6w/edit#heading=h.qznmwoavtwsw
     var resultContentInfo = {
@@ -87,7 +87,7 @@ module.exports = nodeUnit.testCase({
   'file delivery result(2), successful case.' : function(assert) {
     // record state
     var context = moat.init(sinon);
-    var arguments = {
+    var args = {
       contents: JSON.stringify([
 	{
           uid: "uid-1",
@@ -101,7 +101,7 @@ module.exports = nodeUnit.testCase({
     };
     context.setDevice('uid', 'deviceId', 'name', 'status', 'clientVersion', 0);
     context.setDmjob('uid', 'deviceId', 'name', 'status', 'jobServiceId',
-		     'sessionId', arguments, 'createdAt', 'activatedAt', 'startedAt',
+		     'sessionId', args, 'createdAt', 'activatedAt', 'startedAt',
 		     'expiredAt', 'http', 'http://localhost');
     // see https://docs.google.com/a/yourinventit.com/document/d/1kdHxMp2VcZWcDnJ4YZqmW_aEYQt94ySrlityZQK2g6w/edit#heading=h.qznmwoavtwsw
     context.setObjects([{
@@ -123,7 +123,6 @@ module.exports = nodeUnit.testCase({
       'Content', ['uid-2'],
       ['name','object'], ['get']).returns([file]);
 
-    var session = context.session;
     var contentInfoMapper = session.newModelMapperStub('ContentInfo');
     var contentInfo = contentInfoMapper.newModelStub();
     context.addCommand(contentInfo, 'download',
