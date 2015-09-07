@@ -1,19 +1,43 @@
 {
   "name": "file",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "File transfer app",
-	"maintainers": [
-		{
-			"name": "Tokyo Engineering Team",
-			"email": "asparagus@yourinventit.com"
-		}
-	],
+  "maintainers": [
+    {
+      "name": "Tokyo Engineering Team",
+      "email": "egypt@yourinventit.com"
+    }
+  ],
   "bugs": {
-		"mail": "iidn-sys-notice@yourinventit.com"
+    "mail": "egypt@yourinventit.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/inventit/ssjs-file.git"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-clean": "~0.6.0",
+    "grunt-contrib-compress": "^0.13.0",
+    "grunt-contrib-copy": "~0.7.0",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-contrib-nodeunit": "~0.4.1",
+    "grunt-contrib-uglify": "~0.6.0",
+    "grunt-jsdoc": "~0.5.7",
+    "grunt-mocha-chai-sinon": "~0.0.8",
+    "nodeunit": "*",
+    "sinon": ">= 1.5.2"
+  },
+  "dependencies": {
+    "moat": ">=1.0.0 <2.0.0"
+  },
+  "engines": {
+    "moat-runtime": ">=1.0.0 <2.0.0"
   },
   "models" : {
     "ContentInfo" : {
       "array" : false,
+      "scope" : "device",
       "attributes" : {
         "deliveryUrl" : {"type" : "string"},
         "uploadUrl" : {"type" : "string"},
@@ -26,39 +50,19 @@
         "upload" : {"paramType" : null}
       }
     },
-    "ConfigurationInfo" : {
+    "FileResult" : {
       "array" : false,
+      "scope" : "device",
       "attributes" : {
-        "deliveryUrl" : {"type" : "string"},
-        "uploadUrl" : {"type" : "string"}
-      },
-      "commands" : {
-        "downloadAndApply" : {"paramType" : null},
-        "uploadConfig" : {"paramType" : null}
+	"success" : {"type" : "boolean"},
+	"uid" : {"type" : "string"},
+	"message" : {"type" : "string"},
+	"code" : {"type" : "string"}
       }
     },
-    "SyslogInfo" : {
-      "array" : false,
-      "attributes" : {
-        "uploadUrl" : {"type" : "string"},
-        "maxLogs" : {"type" : "int32"}
-      },
-      "commands" : {
-        "upload" : {"paramType" : null}
-      }
-    },
-		"FileResult" : {
-			"array" : false,
-			"attributes" : {
-				"success" : {"type" : "boolean"},
-				"uid" : {"type" : "string"},
-				"message" : {"type" : "string"},
-				"code" : {"type" : "int32"}
-			}
-		},
     "Content" : {
       "array" : true,
-			"shared" : true,
+      "scope" : "user",
       "attributes" : {
         "name" : {"type" : "string"},
         "object" : {"type" : "resource"},
