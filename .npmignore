@@ -1,0 +1,5 @@
+Rakefile
+*.test.js
+*.tgz
+*.zip
+.npmignore
