@@ -204,7 +204,7 @@ pi$ make package
 5. Select the server package and push [submit] button.
 6. Click [Deploy] button in [Detail Info].
 
-### install
+### Install
 
 1. Login to ServiceSync Web Console with PU's (Platform User) account.
 2. Select [Packages] from the side menu.
